@@ -1,5 +1,6 @@
 package com.rs.ecommerce.shop.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ public class Customer {
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
     private LocalDateTime lastLoginTimeStamp;
+    @JsonProperty //reason: https://stackoverflow.com/questions/21913955/json-post-request-for-boolean-field-sends-false-by-default
     private boolean isAdmin;
 
     public Customer() {
@@ -97,13 +99,13 @@ public class Customer {
         this.lastLoginTimeStamp = lastLoginTimeStamp;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
+//    public boolean isAdmin() {
+//        return isAdmin;
+//    }
+//
+//    public void setAdmin(boolean isAdmin) {
+//        this.isAdmin = isAdmin;
+//    }
 
     public Customer(int cusId, String fname, String lname, String phone, String email,
                     String password, LocalDateTime createdDate, LocalDateTime modifiedDate,
